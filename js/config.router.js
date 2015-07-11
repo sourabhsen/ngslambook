@@ -5,16 +5,31 @@
  */
 angular.module('app')
   .run(
-    [          '$rootScope', '$state', '$stateParams',
-      function ($rootScope,   $state,   $stateParams) {
+    [          '$rootScope', '$state', '$stateParams', '$cookieStore', '$location' ,'$http',
+      function ($rootScope,   $state,   $stateParams, $cookieStore, $location , $http) {
+	      
+		// keep user logged in after page refresh
+        $rootScope.globals = $cookieStore.get('globals') || {};
+        if ($rootScope.globals.currentUser) {
+             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+        }
+		
+		$rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in
+            if ($location.path() !== '/access/signin' && !$rootScope.globals.currentUser) {
+                 $location.path('/access/signin');
+            }
+        }); 
+		
+		
           $rootScope.$state = $state;
           $rootScope.$stateParams = $stateParams;        
       }
     ]
   )
   .config(
-    [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG', 
-      function ($stateProvider,   $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG ) {
+    [          '$stateProvider', '$urlRouterProvider',  
+      function ($stateProvider,   $urlRouterProvider) {
           var layout = "/tpl/app.html";
               $urlRouterProvider
               .otherwise('/app/dashboard-v1');
@@ -58,8 +73,28 @@ angular.module('app')
             url: '/payment',
             templateUrl: '/tpl/form-payment.html'
         })
+		.state('access', {
+            url: '/access',
+            template: '<div ui-view class="fade-in-right-big smooth"></div>'
+			
+        })
 		  
-
+		.state('access.signin',{
+              url:'/signin',
+              templateUrl:'/tpl/page_signin.html'
+			  
+          
+          })
+		  .state('access.signup',{
+              url:'/signup',
+              templateUrl:'/tpl/page_signup.html'
+			  
+          
+          })
+		  .state('access.forgotpwd', {
+                  url: '/forgotpwd',
+                  templateUrl: 'tpl/page_forgotpwd.html'
+           })
           
             
       }
