@@ -777,7 +777,11 @@ body {
 .app-footer.app-footer-fixed {
   position: fixed;
 }
-
+.btn.add-f{
+  position:fixed;
+  bottom:40px;
+  right:40px;
+}
 .hbox {
   display: table;
   width: 100%;

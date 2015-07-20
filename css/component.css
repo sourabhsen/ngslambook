@@ -21,6 +21,7 @@ html, body, .perspective {
 	-webkit-perspective: 2000px;
 }
 
+
 .slamcontainer {
 	background: #fff;
 	min-height: 100%;
@@ -105,7 +106,6 @@ html, body, .perspective {
 	max-width: 1000px;
 	text-align: center;
 	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
 }
 
 .outer-nav.left {
@@ -329,8 +329,9 @@ html, body, .perspective {
 .effect-rotateleft .slamcontainer::after {
 	background: rgba(255,255,255,0.6);
 }
+	
 
-.effect-rotateleft.animate .slamcontainer {
+.effect-rotateleft.animate  .slamcontainer {
 	-webkit-transform: translateZ(-1800px) translateX(-50%) rotateY(45deg);
 	transform: translateZ(-1800px) translateX(-50%) rotateY(45deg);
 }
@@ -662,4 +663,36 @@ html, body, .perspective {
 	.outer-nav a {
 		margin-bottom: 20px;
 	}
+}
+
+.sigin-wrapper{
+		background:url("../img/f-s1.jpg");
+		width:100%;
+		height:100%;
+		display:block;
+		position: absolute;
+		background-position: 0 0;
+        background-size: 100% 100%; 
+}
+.sigin-wrapper:before {
+  content: "";
+  background-color: #0B0B0B;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.5;
+}
+
+.sigin-wrapper small , .sigin-wrapper a , .sigin-wrapper strong{
+  color: #fff;
+}
+.sigin-wrapper input , .sigin-wrapper .list-group-item{
+  background: transparent;
+  border:transparent;
+  color:#fff;
+  
+}
+.sigin-wrapper input{
+ border-bottom: 1px solid #fff;
+ font-size:18px;
 }
