@@ -34,8 +34,11 @@ angular.module('app')
           asideFixed: false,
           asideFolded: false,
 		  menuFolded: true,
+		  mobileMenuToggle : false,
           asideDock: false,
-          container: false
+          container: false,
+		  mobileSideToggle : false
+		 
         }
       }
 
@@ -55,11 +58,16 @@ angular.module('app')
 		
 		$scope.app.settings.menuFolded ? angular.element('#perspective').addClass('modalview animate') : angular.element('#perspective').removeClass('modalview animate');
 		
+		//STORING USERORFILE OBJECT
+		 $scope.app.settings.userProfile = $rootScope.globals.currentUser;
+		 
+
 		
         // save to local storage
         $localStorage.settings = $scope.app.settings;
       }, true);
-
+	  
+	  
       // angular translate
       $scope.lang = { isopen: false };
       $scope.langs = {en:'English', de_DE:'German', it_IT:'Italian'};

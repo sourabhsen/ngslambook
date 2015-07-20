@@ -54,6 +54,7 @@ angular.module('app')
  
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
+
         };
 		
 		service.validCredentials = function (username, password, email, callback) {
@@ -82,6 +83,10 @@ angular.module('app')
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
+		
+		service.getUserInfo = function(){
+		    return $rootScope.globals.currentUser;
+		};
  
         return service;
     }])
