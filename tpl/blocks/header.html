@@ -1,5 +1,5 @@
       <!-- navbar header -->
-      <div class="navbar-header {{app.settings.navbarHeaderColor}}">
+      <div class="navbar-header {{app.settings.navbarHeaderColor}}" >
         <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
           <i class="glyphicon glyphicon-cog"></i>
         </button>
@@ -7,7 +7,7 @@
           <i class="fa fa-dedent fa-fw"></i>
         </button>
 		
-		 <button class="pull-right visible-xs" ng-click="app.settings.menuFolded = !app.settings.menuFolded">
+		 <button class="pull-right visible-xs" disabled="$scope.app.settings.mobileSideToggle = !$scope.app.settings.mobileSideToggle" ng-click="app.settings.menuFolded = !app.settings.menuFolded">
           <i class="glyphicon glyphicon-align-justify"></i>
         </button>
 		
@@ -22,7 +22,7 @@
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}" ng-controller="headerCntrl">
         <!-- buttons -->
         <div class="nav navbar-nav hidden-xs">
           <a href class="btn no-shadow navbar-btn" ng-click="app.settings.menuFolded = !app.settings.menuFolded">
@@ -112,7 +112,7 @@
                 <img src="img/a0.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
               </span>
-              <span class="hidden-sm hidden-md">{{app.userProfile.username}}</span> <b class="caret"></b>
+              <span class="hidden-sm hidden-md">{{currentUser.username}}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">

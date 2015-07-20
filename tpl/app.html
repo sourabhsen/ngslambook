@@ -1,5 +1,6 @@
   
  <div id="perspective" class="perspective effect-rotateleft">
+    
    <div class="slamcontainer">
   <!-- navbar -->
   <div data-ng-include=" 'tpl/blocks/header.html' " class="app-header navbar">
@@ -17,9 +18,10 @@
     <div ui-butterbar></div>
     <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
     <div class="app-content-body animated fadeInRight" style="padding-top:50px;" ui-view></div>
+	
   </div>
   <!-- /content -->
-
+  
  
 
   <div data-ng-include=" 'tpl/blocks/settings.html' " class="settings panel panel-default">
@@ -34,3 +36,5 @@
 			
 			
 </div>
+
+<button ui-sref="app.newForm.profile" class="btn btn-rounded btn-lg btn-icon btn-info pull-right add-f "><i class="fa glyphicon-plus"></i></button>
